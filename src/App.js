@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
-function App() {
+import RatingCard from "./components/RatingCard";
+import ThankYouCard from "./components/ThankYouCard";
+
+const App = () => {
+  const [isThankYou, setIsThankYou] = useState(false);
+  const [rating, setRating] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div>
+      {!isThankYou ? (
+        <RatingCard
+          setIsThankYou={setIsThankYou}
+          rating={rating}
+          setRating={setRating}
+        />
+      ) : (
+        <ThankYouCard rating={rating} />
+      )}
+
+      <div class="attribution">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Challenge by{" "}
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+            {" "}
+            Frontend Mentor
+          </a>
+          . Coded by <a href="#">Daniel Castillo</a>.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
