@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 import RatingCard from "./components/RatingCard";
 import ThankYouCard from "./components/ThankYouCard";
@@ -9,17 +10,20 @@ const App = () => {
 
   return (
     <div>
-      {!isThankYou ? (
-        <RatingCard
-          setIsThankYou={setIsThankYou}
-          rating={rating}
-          setRating={setRating}
-        />
-      ) : (
-        <ThankYouCard rating={rating} />
-      )}
+      <AnimatePresence exitBeforeEnter>
+        {!isThankYou ? (
+          <RatingCard
+            key="ratingCard"
+            setIsThankYou={setIsThankYou}
+            rating={rating}
+            setRating={setRating}
+          />
+        ) : (
+          <ThankYouCard key="tyCard" rating={rating} />
+        )}
+      </AnimatePresence>
 
-      <div class="attribution">
+      <div className="attribution">
         <p>
           Challenge by{" "}
           <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">

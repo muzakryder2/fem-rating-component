@@ -1,8 +1,24 @@
+import { motion } from "framer-motion";
+
 import starIcon from "../assets/images/icon-star.svg";
 
 const RatingCard = ({ rating, setRating, setIsThankYou }) => {
+  const variants = {
+    hidden: {
+      transform: "translate(500%, -50%)",
+    },
+    visible: {
+      transform: "translate(-50%, -50%)",
+    },
+  };
   return (
-    <div className="card">
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      exit={{ transform: "translate(-500%, -50%)" }}
+      className="card"
+    >
       <div className="card__head">
         <img src={starIcon} alt="" />
       </div>
@@ -33,7 +49,7 @@ const RatingCard = ({ rating, setRating, setIsThankYou }) => {
           Submit
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

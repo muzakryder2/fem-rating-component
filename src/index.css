@@ -23,6 +23,7 @@ body {
   font-size: 15px;
   background-color: var(--clr-veryDarkBlue);
   position: relative;
+  overflow: hidden;
 }
 
 .card {
@@ -136,7 +137,7 @@ body {
 .tycard__body__rating {
   color: var(--clr-orange);
   background-color: var(--clr--darkBlue);
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 1rem;
 }
 
