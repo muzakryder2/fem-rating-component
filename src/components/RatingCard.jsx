@@ -11,6 +11,7 @@ const RatingCard = ({ rating, setRating, setIsThankYou }) => {
       transform: "translate(-50%, -50%)",
     },
   };
+
   return (
     <motion.div
       variants={variants}
@@ -32,7 +33,6 @@ const RatingCard = ({ rating, setRating, setIsThankYou }) => {
           {[1, 2, 3, 4, 5].map((val) => (
             <button
               key={val}
-              number={val}
               className={`rating-btn ${
                 rating === val ? "rating-btn--selected" : null
               }`}
@@ -44,7 +44,11 @@ const RatingCard = ({ rating, setRating, setIsThankYou }) => {
         </div>
         <button
           className="card__submit-btn"
-          onClick={() => setIsThankYou(true)}
+          onClick={() => {
+            if (rating) {
+              setIsThankYou(true);
+            }
+          }}
         >
           Submit
         </button>
